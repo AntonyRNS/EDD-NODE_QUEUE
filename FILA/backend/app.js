@@ -3,17 +3,39 @@ import cors from 'cors';
 import {Queue} from "./class-queue.js"
 import path from 'path'
 
+
+import { fileURLToPath } from 'url';
 const app = express();
 const queue = new Queue()
+
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 
 
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+
 app.get('/', (req, resp) => {
   resp.sendFile(path.join(__dirname, '..', 'frontend', 'index.html'));
 });
+
+
+app.get('/chamadas', (req, resp) => {
+  resp.sendFile(path.join(__dirname, '..', 'frontend', 'chamadas.html'));
+});
+
+app.get('/atendimento', (req, resp) => {
+  resp.sendFile(path.join(__dirname, '..', 'frontend', 'atendimento.html'));
+});
+
+app.get('/senha', (req, resp) => {
+  resp.sendFile(path.join(__dirname, '..', 'frontend', 'senha.html'));
+});
+
 
 app.get('/queue', (req, res) => {
   res.send({
