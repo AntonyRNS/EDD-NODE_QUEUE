@@ -19,6 +19,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 
+
+
+
+
 app.get('/', (req, resp) => {
   resp.sendFile(path.join(__dirname, '..', 'frontend', 'index.html'));
 });
@@ -35,6 +39,10 @@ app.get('/atendimento', (req, resp) => {
 app.get('/senha', (req, resp) => {
   resp.sendFile(path.join(__dirname, '..', 'frontend', 'senha.html'));
 });
+
+
+
+
 
 
 app.get('/queue', (req, res) => {
@@ -68,6 +76,7 @@ app.get('/dequeue', function(req, res) {
         'element': element,
       })
 })
+
 
 app.get('/size', function(req, res) {
     const size = queue.size()
