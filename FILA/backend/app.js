@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import {Queue} from "./class-queue.js"
-
+import path from 'path'
 
 const app = express();
 const queue = new Queue()
@@ -12,7 +12,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.get('/', (req, resp) => {
-  resp.send('Hello World');
+  resp.sendFile(path.join(__dirname, '..', 'frontend', 'index.html'));
 });
 
 app.get('/queue', (req, res) => {
